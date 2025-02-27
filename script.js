@@ -70,7 +70,7 @@ document.getElementById("btn").addEventListener('click', function() {
 function processNumber(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            document.getElementById("output").innerHTML = `Result: ${num}`;
+            document.getElementById("output").innerHTML = `Final Result: ${num}`;
             resolve(num);
         }, 2000); // Reduced delay
     });
@@ -80,7 +80,7 @@ function doubleNumber(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let newNum = num * 2;
-            document.getElementById("output").innerHTML = `Result: ${newNum}`;
+            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
             resolve(newNum);
         }, 2000);
     });
@@ -90,7 +90,7 @@ function subtractThree(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let newNum = num - 3;
-            document.getElementById("output").innerHTML = `Result: ${newNum}`;
+            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
             resolve(newNum);
         }, 1000);
     });
@@ -100,7 +100,7 @@ function divideByTwo(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let newNum = num / 2;
-            document.getElementById("output").innerHTML = `Result: ${newNum}`;
+            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
             resolve(newNum);
         }, 1000);
     });
@@ -110,7 +110,7 @@ function addTen(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let newNum = num + 10;
-            document.getElementById("output").innerHTML = `Result: ${newNum}`;
+            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
             resolve(newNum);
         }, 1000);
     });
@@ -118,5 +118,5 @@ function addTen(num) {
 
 // Ensure final display result is consistent with Cypress expectations
 function displayResult(num) {
-    document.getElementById("output").innerHTML = `Result: ${num}`;
+    document.getElementById("output").innerHTML = `Final Result: ${num}`;
 }

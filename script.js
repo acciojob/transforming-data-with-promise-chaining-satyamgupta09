@@ -39,7 +39,7 @@ function add(num){
 	return new Promise((resolve)=>{
 		setTimeout(()=>{
 			resolve(num+10);
-			document.getElementById("output").innerHTML=`<p>Result: ${num+10}</p>`;
+			document.getElementById("output").innerHTML=`<p>Final Result: ${num+10}</p>`;
 		},1000);
 	})
 }

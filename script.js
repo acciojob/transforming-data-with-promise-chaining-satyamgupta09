@@ -1,122 +1,64 @@
-// // function Prom1(){
-// // 	return new Promise(()=>{
-// // 		setTimeout(()=>{
-// // 			document.getElementById("ip").value;
-// // 		},2000)
-// // 	})
-// // }
+function initial(){
+	return new Promise((resolve)=>{
+		setTimeout(()=>{
+			let val = document.getElementById("ip").value;
+			resolve(val)
+		},2000);
+	})
+}
 
-// document.getElementById("btn").addEventListener('click', function() {
-//     let num = document.getElementById('ip').value;
-    
-//     processNumber(num); // Call the function to start the promise chain
-// });
+function mult(num){
+	return new Promise((resolve)=>{
+		setTimeout(()=>{
+			resolve(num*2);
+		},2000);
+	})
+}
 
-// function processNumber(num){
-// 	return new Promise((resolve)=>{
-// 		setTimeout(()=>{
-// 			document.getElementById("output").innerHTML+=num;
-// 		    resolve(num);
-// 		},2000)
-// 	}).then(function(num){
-// 	return new Promise((resolve)=>{
-// 		setTimeout(()=>{
-// 			let newNum = num*2;
-// 			// document.getElementById("output").innerHTML+='';
-// 			document.getElementById("output").innerHTML+=newNum;
-// 		    resolve(newNum);
-// 		},2000)
-// 	});
-// }).then(function(num){
-// 	return new Promise((resolve)=>{
-// 		setTimeout(()=>{
-// 			let newNum = num - 3;
-// 			// document.getElementById("output").innerHTML+='';
-// 			document.getElementById("output").innerHTML+=newNum;
-// 		    resolve(newNum);
-// 		},1000)
-// 	});
-// }).then(function (num) {
-// 	return new Promise((resolve)=>{
-// 		setTimeout(()=>{
-// 			let newNum = num / 2;
-// 			// document.getElementById("output").innerHTML+='';
-// 			document.getElementById("output").innerHTML+=newNum;
-// 		    resolve(newNum);
-// 		},1000)
-// 	});
-// }).then(function(num) {
-// 	return new Promise((resolve)=>{
-// 		setTimeout(()=>{
-// 			let newNum = num + 10;
-// 			// document.getElementById("output").innerHTML+='';
-// 			document.getElementById("output").innerHTML+=newNum;
-// 		    resolve(newNum);
-// 		},1000)
-// 	});
-// })
-// }
+function subs(num){
+	return new Promise((resolve)=>{
+		setTimeout(()=>{
+			resolve(num-3);
+		},1000);
+	})
+}
+
+function divi(num){
+	return new Promise((resolve)=>{
+		setTimeout(()=>{
+			resolve(num/2);
+		},1000);
+	})
+}
+
+function add(num){
+	return new Promise((resolve)=>{
+		setTimeout(()=>{
+			resolve(num+10);
+		},1000);
+	})
+}
+
 document.getElementById("btn").addEventListener('click', function() {
-    let num = Number(document.getElementById('ip').value); // Convert input to number
+	// let val = getElementById("ip").value;
 
-    processNumber(num)
-        .then(doubleNumber)
-        .then(subtractThree)
-        .then(divideByTwo)
-        .then(addTen)
-        .then(displayResult); // Ensure the final result is formatted correctly
-});
-
-function processNumber(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            document.getElementById("output").innerHTML = `Final Result: ${num}`;
-            resolve(num);
-        }, 2000); // Reduced delay
-    });
-}
-
-function doubleNumber(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let newNum = num * 2;
-            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
-            resolve(newNum);
-        }, 2000);
-    });
-}
-
-function subtractThree(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let newNum = num - 3;
-            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
-            resolve(newNum);
-        }, 1000);
-    });
-}
-
-function divideByTwo(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let newNum = num / 2;
-            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
-            resolve(newNum);
-        }, 1000);
-    });
-}
-
-function addTen(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let newNum = num + 10;
-            document.getElementById("output").innerHTML = `Final Result: ${newNum}`;
-            resolve(newNum);
-        }, 1000);
-    });
-}
-
-// Ensure final display result is consistent with Cypress expectations
-function displayResult(num) {
-    document.getElementById("output").innerHTML = `Final Result: ${num}`;
-}
+	initial().then((res)=>{
+		return mult(res);
+	})
+	.then((res)=>{
+		document.getElementById("output").innerHTML=`<p>Result: ${res}</p>`;
+		return subs(res);
+	})
+	.then((res)=>{
+		document.getElementById("output").innerHTML=`<p>Result: ${res}</p>`;
+		return divi(res);
+	})
+	.then((res)=>{
+		document.getElementById("output").innerHTML=`<p>Result: ${res}</p>`;
+		return add(res);
+	})
+	.then((res)=>{
+		document.getElementById("output").innerHTML=`<p>Result: ${res}</p>`;
+		// return add(res);
+	})
+})

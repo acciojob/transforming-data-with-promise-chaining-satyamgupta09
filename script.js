@@ -1,7 +1,7 @@
 function initial(){
 	return new Promise((resolve)=>{
 		setTimeout(()=>{
-			let val = document.getElementById("ip").value;
+			let val = parseFloat(document.getElementById("ip").value);
 			resolve(val)
 		},2000);
 	})
@@ -40,7 +40,6 @@ function add(num){
 }
 
 document.getElementById("btn").addEventListener('click', function() {
-	// let val = getElementById("ip").value;
 
 	initial().then((res)=>{
 		return mult(res);
@@ -59,6 +58,5 @@ document.getElementById("btn").addEventListener('click', function() {
 	})
 	.then((res)=>{
 		document.getElementById("output").innerHTML=`<p>Result: ${res}</p>`;
-		// return add(res);
 	})
 })
